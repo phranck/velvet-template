@@ -1,0 +1,25 @@
+{
+  "owner": "your-username",
+  "repo": "your-status-repo",
+  "dataBranch": "main",
+  "name": "Example",
+  "navbar": [
+    {
+      "title": "Status",
+      "href": "/"
+    },
+    {
+      "title": "History",
+      "href": "https://github.com/your-username/your-status-repo/issues"
+    }
+  ],
+  "theme": {
+    "accent": "#6366f1",
+    "accentDeg": "#d29922",
+    "accentDown": "#f85149"
+  },
+  "icons": {
+    "website": "ph-globe",
+    "api": "ph-brackets-curly"
+  }
+}
