@@ -1,0 +1,37 @@
+# Build + deploy the Velvet front-end (https://github.com/phranck/velvet) to
+# GitHub Pages. Velvet replaces Upptime's stock "Static Site CI" — disable that
+# workflow if it appears. A custom domain comes from status-website.cname in
+# .upptimerc.yml (Velvet writes the CNAME into the build).
+name: Velvet
+on:
+  push:
+    paths:
+      - ".upptimerc.yml"
+      - "assets/**"
+      - ".github/workflows/velvet.yml"
+  repository_dispatch:
+    types: [static_site]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: velvet-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  build:
+    name: Build and deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build Velvet site
+        uses: phranck/velvet@v1
+        with:
+          config: .upptimerc.yml
+          output: velvet-dist
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GH_PAT || github.token }}
+          publish_dir: velvet-dist
+          user_name: "Velvet Bot"
+          user_email: "actions@users.noreply.github.com"
