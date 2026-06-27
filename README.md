@@ -32,6 +32,7 @@ That last commit starts everything: Upptime begins monitoring your `sites`, and 
 - Incidents and maintenance windows from GitHub Issues, fetched live, plus an Atom/RSS feed (`/incidents.atom`) behind a Subscribe button.
 - One-click maintenance banners (the **Maintenance switch** workflow / issue templates), plus optional CI-driven deploy banners (**Deploy announce** — your app dispatches `deploy_start` / `deploy_end` with a `STATUS_DISPATCH_TOKEN`). Both open a `maintenance` issue that shows live on the page.
 - A workflow that strips Upptime's hardcoded emoji from incident issue titles.
+- Optional visitor analytics — drop in an [Umami](https://umami.is) site or a Google Analytics 4 ID (`velvet.umami` / `velvet.googleAnalytics`) and Velvet injects the tracker for you.
 
 ## Configuration
 
