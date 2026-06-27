@@ -92,7 +92,7 @@ status-website:
     # seo:
     #   title: "Acme System Status"               # default: "<name> — Status"
     #   description: "Real-time uptime for Acme."  # default: a line built from the name
-    #   image: "https://acme.example/og.png"       # social card; default: logoUrl
+    #   image: "https://acme.example/og.png"       # social card; default: the auto-generated status card
     # Per-service icon: key = service slug, value = a Phosphor icon.
     # Browse + search the full set at https://phosphoricons.com, then prefix the
     # name with "ph-" (e.g. the "database" icon -> ph-database). Velvet renders it
