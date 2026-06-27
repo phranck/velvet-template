@@ -1,15 +1,28 @@
 # Velvet status page template
 
-A ready-to-fork [Upptime](https://upptime.js.org) + [Velvet](https://github.com/phranck/velvet) status page: serverless uptime monitoring with a polished, dark front-end. No server required.
+A ready-to-fork [Upptime](https://upptime.js.org) + [Velvet](https://github.com/phranck/velvet) status page: serverless uptime monitoring with a polished, dark front-end. No server, no database — just a GitHub repository.
 
-## Quick start
+<p align="center">
+  <img src="https://raw.githubusercontent.com/phranck/velvet/main/docs/screenshot.png" alt="Velvet status page" width="820">
+</p>
 
-1. Click **Use this template** and create your repository.
-2. Edit [`.upptimerc.yml`](.upptimerc.yml): set `owner` / `repo`, your `sites`, and the `velvet` block (colours, layout, icons). Each field is commented inline.
-3. Add a `GH_PAT` secret (classic PAT with `repo` + `workflow` scopes) — Upptime needs it to commit monitoring data and deploy.
-4. Set **GitHub Pages** source to **GitHub Actions** (Settings → Pages → Build and deployment → Source). For a custom domain, set `status-website.cname` in `.upptimerc.yml` — Velvet writes the `CNAME` for you.
-5. Push. The Upptime workflows start monitoring; the **Velvet** workflow builds and deploys the front-end via the official Pages deployment.
-6. If Upptime's **Static Site CI** / **Setup CI** workflows push a stock page, disable them — Velvet's Pages-Actions deploy replaces it.
+## Setup
+
+Four steps, all in the GitHub web UI — no local tools, no build to run.
+
+1. **Create your repository.** Click **Use this template → Create a new repository** at the top of this page.
+
+2. **Add the `GH_PAT` secret.** Create a [classic Personal Access Token](https://github.com/settings/tokens/new) with the **`repo`** and **`workflow`** scopes. Then, in your new repository, open **Settings → Secrets and variables → Actions → New repository secret**, name it exactly `GH_PAT`, and paste the token. _(Upptime uses it to commit monitoring data and to deploy the page.)_
+
+3. **Turn on Pages.** Open **Settings → Pages → Build and deployment** and set **Source** to **GitHub Actions**.
+
+4. **Edit [`.upptimerc.yml`](.upptimerc.yml) and commit.** Set `owner` / `repo` to your new repository, list the `sites` you want to monitor, and adjust the `velvet` block (name, colours, layout, icons). Every field is commented inline.
+
+That last commit starts everything: Upptime begins monitoring your `sites`, and Velvet builds and deploys the page. Within a few minutes it is live at `https://<owner>.github.io/<repo>/`.
+
+> **Custom domain?** Set `status-website.cname` in `.upptimerc.yml` — Velvet writes the `CNAME` file for you on every deploy.
+>
+> **Seeing a plain Upptime page instead of Velvet?** Open the **Actions** tab and disable a **Static Site CI** workflow if one appears — Velvet deploys through Pages Actions and doesn't need it.
 
 ## What you get
 
@@ -17,7 +30,7 @@ A ready-to-fork [Upptime](https://upptime.js.org) + [Velvet](https://github.com/
 - One grouped card or one card per service (`velvet.layout`); each card's open state and the selected range persist across reloads, plus an expand/collapse-all control beside the range selector.
 - Optional per-service IPv4 / IPv6 monitoring (via Globalping) — both protocols folded into one card with status pills.
 - Incidents and maintenance windows from GitHub Issues, fetched live, plus an Atom/RSS feed (`/incidents.atom`) behind a Subscribe button.
-- One-click maintenance banners (the **Maintenance switch** workflow / issue templates), plus optional CI-driven deploy banners (**Deploy announce** — your app dispatches `deploy_start`/`deploy_end` with a `STATUS_DISPATCH_TOKEN`). Both open a `maintenance` issue that shows live on the page.
+- One-click maintenance banners (the **Maintenance switch** workflow / issue templates), plus optional CI-driven deploy banners (**Deploy announce** — your app dispatches `deploy_start` / `deploy_end` with a `STATUS_DISPATCH_TOKEN`). Both open a `maintenance` issue that shows live on the page.
 - A workflow that strips Upptime's hardcoded emoji from incident issue titles.
 
 ## Configuration
