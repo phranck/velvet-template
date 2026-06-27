@@ -15,6 +15,7 @@ A ready-to-fork [Upptime](https://upptime.js.org) + [Velvet](https://github.com/
 
 - Selectable uptime history (24h / 7d / 30d / 90d / 1yr), Phosphor duotone icons, an indigo-by-default dark theme — all themeable from `.upptimerc.yml`.
 - One grouped card or one card per service (`velvet.layout`); each card's open state and the selected range persist across reloads.
+- Optional per-service IPv4 / IPv6 monitoring (via Globalping) — both protocols folded into one card with status pills.
 - Incidents and maintenance windows from GitHub Issues, fetched live, plus an Atom/RSS feed (`/incidents.atom`) behind a Subscribe button.
 - A workflow that strips Upptime's hardcoded emoji from incident issue titles.
 
