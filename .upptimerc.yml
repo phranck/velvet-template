@@ -70,6 +70,7 @@ status-website:
   velvet:
     layout: cards           # "cards" = one card per service; "grouped" = one shared card
     # logoHeight: 44         # logo height in px (width scales); raise for a taller logo
+    # defaultRange: 30d      # range pre-selected on first visit (24h / 7d / 30d / 90d / 1yr)
     # showPoweredBy: false   # hide the footer "Powered by Velvet + Upptime" credit
     # showSubscribe: false   # hide the footer Subscribe (RSS) link
     accent: "#6366f1"       # primary / operational colour (any hex)
