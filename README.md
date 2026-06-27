@@ -5,7 +5,7 @@ A ready-to-fork [Upptime](https://upptime.js.org) + [Velvet](https://github.com/
 ## Quick start
 
 1. Click **Use this template** and create your repository.
-2. Edit [`.upptimerc.yml`](.upptimerc.yml): set `owner` / `repo`, your `sites`, and the `velvet` block (accent colour, icons).
+2. Edit [`.upptimerc.yml`](.upptimerc.yml): set `owner` / `repo`, your `sites`, and the `velvet` block (colours, layout, icons). Each field is commented inline.
 3. Add a `GH_PAT` secret (classic PAT with `repo` + `workflow` scopes) — Upptime needs it to commit monitoring data and deploy.
 4. Set **GitHub Pages** source to **GitHub Actions** (Settings → Pages → Build and deployment → Source). For a custom domain, set `status-website.cname` in `.upptimerc.yml` — Velvet writes the `CNAME` for you.
 5. Push. The Upptime workflows start monitoring; the **Velvet** workflow builds and deploys the front-end via the official Pages deployment.
@@ -17,6 +17,10 @@ A ready-to-fork [Upptime](https://upptime.js.org) + [Velvet](https://github.com/
 - One grouped card or one card per service (`velvet.layout`); each card's open state and the selected range persist across reloads.
 - Incidents and maintenance windows from GitHub Issues, fetched live, plus an Atom/RSS feed (`/incidents.atom`) behind a Subscribe button.
 - A workflow that strips Upptime's hardcoded emoji from incident issue titles.
+
+## Configuration
+
+Every field of `.upptimerc.yml` is explained in the **[Velvet configuration reference](https://github.com/phranck/velvet/blob/main/CONFIGURATION.md)** — all `sites` check options, the `status-website` identity fields, and the full `velvet` appearance block (layout, colours, fonts, icons), plus which stock Upptime fields Velvet ignores.
 
 The front-end and its GitHub Action live in [phranck/velvet](https://github.com/phranck/velvet). Monitoring is powered by [Upptime](https://github.com/upptime/upptime).
 
