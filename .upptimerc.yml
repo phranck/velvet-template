@@ -30,7 +30,26 @@ sites:
     # expectedStatusCodes: [200, 401] # codes that count as "up" (default 2xx)
     # maxResponseTime: 5000           # ms before a response is "degraded"
     # headers: ["Authorization: Bearer $TOKEN"]   # $SECRET reads repo secrets
-    # ipv6: true                      # force IPv6-only DNS for this check
+
+  # ── IPv4 / IPv6 per service ─────────────────────────────────────────────────
+  # A plain check runs from the GitHub runner (IPv4-only). To check IPv6 too, route
+  # it through Globalping (dual-stack probes) and add a GLOBALPING_TOKEN repo secret.
+  # Choose per service:
+  #   * IPv4 only -> a normal check (like the two above).
+  #   * IPv6 only -> one Globalping check; end the name in "IPv6" so Velvet labels it:
+  #       - name: Mail IPv6
+  #         url: https://mail.example.com
+  #         type: globalping
+  #         check: http
+  #         ipv6: true
+  #   * Both, in one card -> the normal check PLUS a sibling whose slug ends "-ipv6":
+  #       - name: API IPv6      # slug "api-ipv6" -> folded into the "api" card
+  #         url: https://api.example.com/health
+  #         type: globalping
+  #         check: http
+  #         ipv6: true
+  # ────────────────────────────────────────────────────────────────────────────
+
   # A service's "slug" (used for icons below) is its lowercased, hyphenated name:
   # "API" → "api", "Developer Site" → "developer-site".
 
