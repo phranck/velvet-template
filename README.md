@@ -26,4 +26,4 @@ The front-end and its GitHub Action live in [phranck/velvet](https://github.com/
 
 ## License
 
-This repository has been published under the [MIT](https://mit-license.org) license.
+This repository has been published under the [MIT](https://layered.mit-license.org) license.
