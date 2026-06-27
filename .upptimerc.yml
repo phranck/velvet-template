@@ -22,16 +22,16 @@ status-website:
   # cname: status.example.com    # set this if you use a custom domain
   name: Example
   # logoUrl: https://example.com/logo.svg   # if set, the logo links to "/"
-  # Navbar links (the brand/logo always links to "/"). Use `navbar: []` for none.
-  navbar:
-    - title: Status
-      href: /
-    - title: History
-      href: https://github.com/$OWNER/$REPO/issues
+  # No navbar links: the brand/logo links to "/". To add some, e.g.:
+  #   navbar:
+  #     - { title: History, href: "https://github.com/$OWNER/$REPO/issues" }
+  navbar: []
   # Velvet front-end (https://github.com/phranck/velvet)
   velvet:
-    accent: "#6366f1" # any hex colour
-    # layout: cards   # one card per service (default: "grouped", all in one card)
+    layout: cards # one card per service (or "grouped": all services in one card)
+    accent: "#6366f1" # accent / operational colour (any hex)
+    accentDeg: "#d29922" # degraded colour
+    accentDown: "#f85149" # down colour
     icons: # Phosphor (duotone) icon class per service slug
       website: ph-globe
       api: ph-brackets-curly
