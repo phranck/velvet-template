@@ -3,10 +3,11 @@
 # Quick start:
 #   1. Set `owner` / `repo` to YOUR new repository.
 #   2. List your services under `sites`.
-#   3. Tweak the `velvet` block (accent colour, per-service icons).
+#   3. Tweak the `velvet` block (accent colour, layout, per-service icons).
 #   4. Add a `GH_PAT` repository secret (classic PAT, repo + workflow scopes).
-#   5. After the first run, enable GitHub Pages from the `gh-pages` branch
-#      and disable the "Static Site CI" workflow if it appears.
+#   5. Set GitHub Pages source to "GitHub Actions" (Settings -> Pages -> Build and
+#      deployment -> Source). Velvet deploys via the official Pages action, which
+#      bypasses the gh-pages branch so Upptime's stock page can't overwrite it.
 
 owner: your-username
 repo: your-status-repo
@@ -20,7 +21,8 @@ sites:
 status-website:
   # cname: status.example.com    # set this if you use a custom domain
   name: Example
-  # logoUrl: https://example.com/logo.svg
+  # logoUrl: https://example.com/logo.svg   # if set, the logo links to "/"
+  # Navbar links (the brand/logo always links to "/"). Use `navbar: []` for none.
   navbar:
     - title: Status
       href: /
@@ -29,6 +31,7 @@ status-website:
   # Velvet front-end (https://github.com/phranck/velvet)
   velvet:
     accent: "#6366f1" # any hex colour
+    # layout: cards   # one card per service (default: "grouped", all in one card)
     icons: # Phosphor (duotone) icon class per service slug
       website: ph-globe
       api: ph-brackets-curly

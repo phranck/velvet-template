@@ -1,7 +1,11 @@
 # Build + deploy the Velvet front-end (https://github.com/phranck/velvet) to
-# GitHub Pages. Velvet replaces Upptime's stock "Static Site CI" — disable that
-# workflow if it appears. A custom domain comes from status-website.cname in
-# .upptimerc.yml (Velvet writes the CNAME into the build).
+# GitHub Pages via the OFFICIAL Pages deployment (Pages source = "GitHub
+# Actions"). This deliberately bypasses the gh-pages branch, so Upptime's stock
+# site builders (site.yml / setup.yml, which push Sapper to gh-pages) can no
+# longer overwrite Velvet. Velvet fetches monitoring data at runtime, so this
+# only runs on config/branding changes, incident (issue) changes, manual
+# dispatch, or the static_site event. Incident changes rebuild the static
+# /incidents.atom feed that the Subscribe button points at.
 name: Velvet
 on:
   push:
@@ -9,18 +13,25 @@ on:
       - ".upptimerc.yml"
       - "assets/**"
       - ".github/workflows/velvet.yml"
+  issues:
+    types: [opened, closed, reopened, edited, labeled, unlabeled]
   repository_dispatch:
     types: [static_site]
   workflow_dispatch:
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
 concurrency:
-  group: velvet-${{ github.ref }}
+  group: velvet-pages
   cancel-in-progress: false
 jobs:
   build:
     name: Build and deploy
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
       - name: Build Velvet site
@@ -28,10 +39,12 @@ jobs:
         with:
           config: .upptimerc.yml
           output: velvet-dist
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.GH_PAT || github.token }}
-          publish_dir: velvet-dist
-          user_name: "Velvet Bot"
-          user_email: "actions@users.noreply.github.com"
+          path: velvet-dist
+      - name: Deploy to GitHub Pages
+        id: deploy
+        uses: actions/deploy-pages@v4
