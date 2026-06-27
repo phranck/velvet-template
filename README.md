@@ -17,6 +17,7 @@ A ready-to-fork [Upptime](https://upptime.js.org) + [Velvet](https://github.com/
 - One grouped card or one card per service (`velvet.layout`); each card's open state and the selected range persist across reloads, plus an expand/collapse-all control beside the range selector.
 - Optional per-service IPv4 / IPv6 monitoring (via Globalping) — both protocols folded into one card with status pills.
 - Incidents and maintenance windows from GitHub Issues, fetched live, plus an Atom/RSS feed (`/incidents.atom`) behind a Subscribe button.
+- One-click maintenance banners (the **Maintenance switch** workflow / issue templates), plus optional CI-driven deploy banners (**Deploy announce** — your app dispatches `deploy_start`/`deploy_end` with a `STATUS_DISPATCH_TOKEN`). Both open a `maintenance` issue that shows live on the page.
 - A workflow that strips Upptime's hardcoded emoji from incident issue titles.
 
 ## Configuration
