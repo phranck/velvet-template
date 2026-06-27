@@ -85,6 +85,14 @@ status-website:
     #   websiteId: "xxxxxxxx-xxxx-xxxx-xxxx"   # your Umami site's data-website-id
     #   src: "https://analytics.example.com/script.js"  # full Umami script URL
     # googleAnalytics: "G-XXXXXXXXXX"          # Google Analytics 4 measurement ID
+    # SEO (optional). Velvet is fully indexable out of the box: on each deploy it
+    # writes the page title, description, canonical, Open Graph / Twitter tags,
+    # robots.txt and sitemap.xml automatically. These are OVERRIDES — set only what
+    # you want to change; anything you omit stays auto-derived.
+    # seo:
+    #   title: "Acme System Status"               # default: "<name> — Status"
+    #   description: "Real-time uptime for Acme."  # default: a line built from the name
+    #   image: "https://acme.example/og.png"       # social card; default: logoUrl
     # Per-service icon: key = service slug, value = a Phosphor icon.
     # Browse + search the full set at https://phosphoricons.com, then prefix the
     # name with "ph-" (e.g. the "database" icon -> ph-database). Velvet renders it
