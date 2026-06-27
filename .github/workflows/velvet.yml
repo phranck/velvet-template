@@ -35,7 +35,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Build Velvet site
-        uses: phranck/velvet@v1
+        uses: phranck/velvet@v1.0.0
         with:
           config: .upptimerc.yml
           output: velvet-dist
