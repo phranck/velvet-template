@@ -79,8 +79,10 @@ status-website:
     # fontSans: "Inter"          # UI font family (must be browser-available)
     # fontMono: "JetBrains Mono" # monospace font family
     # dataBranch: main           # branch holding history/summary.json (default main)
-    # Per-service icon: key = slug, value = a Phosphor class
-    # (https://phosphoricons.com), prefixed "ph-". Unlisted services use a default.
+    # Per-service icon: key = service slug, value = a Phosphor icon.
+    # Browse + search the full set at https://phosphoricons.com, then prefix the
+    # name with "ph-" (e.g. the "database" icon -> ph-database). Velvet renders it
+    # in the duotone weight. Unlisted services fall back to a sensible default.
     icons:
       website: ph-globe
       api: ph-brackets-curly

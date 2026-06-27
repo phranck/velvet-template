@@ -26,7 +26,7 @@ That last commit starts everything: Upptime begins monitoring your `sites`, and 
 
 ## What you get
 
-- Selectable uptime history (24h / 7d / 30d / 90d / 1yr) with a configurable first-visit default (`velvet.defaultRange`), Phosphor duotone icons, an indigo-by-default dark theme — all themeable from `.upptimerc.yml`.
+- Selectable uptime history (24h / 7d / 30d / 90d / 1yr) with a configurable first-visit default (`velvet.defaultRange`), [Phosphor](https://phosphoricons.com) duotone icons, an indigo-by-default dark theme — all themeable from `.upptimerc.yml`.
 - One grouped card or one card per service (`velvet.layout`); each card's open state and the selected range persist across reloads, plus an expand/collapse-all control beside the range selector.
 - Optional per-service IPv4 / IPv6 monitoring (via Globalping) — both protocols folded into one card with status pills.
 - Incidents and maintenance windows from GitHub Issues, fetched live, plus an Atom/RSS feed (`/incidents.atom`) behind a Subscribe button.
@@ -36,6 +36,8 @@ That last commit starts everything: Upptime begins monitoring your `sites`, and 
 ## Configuration
 
 Every field of `.upptimerc.yml` is explained in the **[Velvet configuration reference](https://github.com/phranck/velvet/blob/main/CONFIGURATION.md)** — all `sites` check options, the `status-website` identity fields, and the full `velvet` appearance block (layout, colours, fonts, icons), plus which stock Upptime fields Velvet ignores.
+
+**Where do icon names like `ph-database` come from?** They are [Phosphor](https://phosphoricons.com) icons. Browse and search the full set at [phosphoricons.com](https://phosphoricons.com), then under `velvet.icons` map a service slug to the icon's name with a `ph-` prefix (e.g. `database: ph-database`). Velvet renders them in the duotone weight.
 
 The front-end and its GitHub Action live in [phranck/velvet](https://github.com/phranck/velvet). Monitoring is powered by [Upptime](https://github.com/upptime/upptime).
 
